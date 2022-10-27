@@ -13,6 +13,7 @@ function newGame() {
 	createField();
 	renderField();
 	renderMinesLeft();
+	renderScore();
 }
 
 function startGame(){

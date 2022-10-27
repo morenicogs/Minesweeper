@@ -16,15 +16,6 @@ function renderField() {
 		pixelDiv.addEventListener('contextmenu', mark);
 		fieldDiv.append(pixelDiv);
 	}
-	// for (let i = 1; i < fieldSize[0] +1 ; i++) {
-	// 	for (let j = 1; j < fieldSize[1] +1 ; j++) {
-	// 		const pixel = document.createElement("div")
-	// 		pixel.classList.add("pixel");
-	// 		pixel.dataset.position = [j,i];
-	// 		pixel.innerText = "⬜";
-	// 		fieldDiv.append(pixel);
-	// 	}
-	// }
 }
 
 function number2emoji(number) {
@@ -81,18 +72,24 @@ function show(x, y){
 	const showPixelPosition = [x, y]
 	const pixel = findPixel(x,y);
 	
+	
+	
 	const showPixel = document.querySelector("[data-position='" + showPixelPosition +"']");
 	if(pixel.minesTouching == 0){
 		showPixel.innerText = "▫️";
+		pixel.flipped = true;
 	} else {
 		showPixel.innerText = number2emoji(pixel.minesTouching);
+		pixel.flipped = true;
 	}
 	if(pixel.isMine){
 		showPixel.innerText = "💥";
+		pixel.flipped = true;
 	}
 	if(pixel.marked){
 		showPixel.innerText = "🚩";
 	}
+	pixels[pixel.id] = pixel;
 }
 
 function hide(x, y){
